@@ -27,6 +27,9 @@ android {
         }
     }
     namespace 'com.example.cryptoapp'
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {

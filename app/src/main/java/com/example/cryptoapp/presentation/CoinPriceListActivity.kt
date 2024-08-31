@@ -4,18 +4,19 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cryptoapp.R
-import com.example.cryptoapp.presentation.adapters.CoinInfoAdapter
-import com.example.cryptoapp.data.network.model.CoinInfoDto
+import com.example.cryptoapp.databinding.ActivityCoinPriceListBinding
 import com.example.cryptoapp.domain.CoinInfo
-import kotlinx.android.synthetic.main.activity_coin_prce_list.*
+import com.example.cryptoapp.presentation.adapters.CoinInfoAdapter
 
 class CoinPriceListActivity : AppCompatActivity() {
 
     private val viewModel: CoinViewModel by viewModels<CoinViewModel>()
-
+    private val binding by lazy{
+        ActivityCoinPriceListBinding.inflate(layoutInflater)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coin_prce_list)
+        setContentView(binding.root)
         val adapter = CoinInfoAdapter(this)
         adapter.onCoinClickListener = object : CoinInfoAdapter.OnCoinClickListener {
             override fun onCoinClick(coinPriceInfo: CoinInfo) {
@@ -26,7 +27,7 @@ class CoinPriceListActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        rvCoinPriceList.adapter = adapter
+        binding.rvCoinPriceList.adapter = adapter
         //viewModel = ViewModelProviders.of(this)[CoinViewModel::class.java]
         viewModel.coinInfoList.observe(this) {
             adapter.coinInfoList = it
