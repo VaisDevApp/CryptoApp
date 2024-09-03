@@ -11,7 +11,6 @@ import com.example.cryptoapp.data.network.ApiFactory
 import com.example.cryptoapp.data.workers.RefreshDataWorker
 import com.example.cryptoapp.domain.CoinInfo
 import com.example.cryptoapp.domain.CoinRepository
-import kotlinx.coroutines.delay
 
 class CoinRepositoryImpl(
     private val application: Application
