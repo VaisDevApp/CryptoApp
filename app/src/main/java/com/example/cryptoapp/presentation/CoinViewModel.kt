@@ -9,7 +9,7 @@ import com.example.cryptoapp.domain.GetCoinInfoUseCase
 import com.example.cryptoapp.domain.LoadDataUseCase
 import kotlinx.coroutines.launch
 
-class CoinViewModel(application: Application): AndroidViewModel(application) {
+class CoinViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = CoinRepositoryImpl(application)
     private val getCoinInfoListUseCase = GetCoinInfoListUseCase(repository)
     private val getCoinInfoUseCase = GetCoinInfoUseCase(repository)
@@ -21,9 +21,6 @@ class CoinViewModel(application: Application): AndroidViewModel(application) {
 
 
     init {
-        viewModelScope.launch {
-            loadDataUseCase()
-        }
-
+        loadDataUseCase()
     }
 }
